@@ -1,0 +1,2 @@
+Leia @DESCRICAO.md e @AGENTS.md. Não escreva código ainda. Proponha as classes, o que cada uma guarda, quais containers da STL você usaria em cada lugar e por quê, e divida a implementação em etapas pequenas, cada uma terminando com algo que compila e que eu consigo testar. Salve em PLANO.md.
+
