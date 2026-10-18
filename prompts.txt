@@ -1,2 +1,132 @@
-Leia @DESCRICAO.md e @AGENTS.md. Não escreva código ainda. Proponha as classes, o que cada uma guarda, quais containers da STL você usaria em cada lugar e por quê, e divida a implementação em etapas pequenas, cada uma terminando com algo que compila e que eu consigo testar. Salve em PLANO.md.
+1. Leia @DESCRICAO.md e @AGENTS.md. Não escreva código ainda. Proponha as classes, o que cada uma guarda, quais containers da STL você usaria em cada lugar e por quê, e divida a implementação em etapas pequenas, cada uma terminando com algo que compila e que eu consigo testar. Salve em PLANO.md.
+R: O planejamento foi elaborado e salvo no arquivo PLANO.md.
+Resumo das Classes e Escolhas da STL
+1. Serie (include/Serie.hpp, src/Serie.cpp):
+- Guarda numero, carga e repeticoes.
+- Contém validações das regras de negócio (carga $\ge$ 0, repetições > 0).
+2. Exercicio (include/Exercicio.hpp, src/Exercicio.cpp):
+- Guarda nome e grupoMuscular.
+- Implementa operator< e operator== para permitir busca e ordenação natural.
+3. RegistroExercicio (include/RegistroExercicio.hpp, src/RegistroExercicio.cpp):
+- Guarda o Exercicio e um std::vector<Serie>. O vector preserva a ordem sequencial das séries executadas e permite iterar para calcular a carga máxima.
+4. TreinoDia (include/TreinoDia.hpp, src/TreinoDia.cpp):
+- Guarda diaSemana, nomeTreino e um std::vector<RegistroExercicio>. O vector preserva a ordem cronológica em que os exercícios foram realizados.
+5. GerenciadorTreino (include/GerenciadorTreino.hpp, src/GerenciadorTreino.cpp):
+- std::set<Exercicio>: catálogo de exercícios. Garante unicidade dos nomes automaticamente e mantém os exercícios ordenados.
+- std::map<std::string, std::string>: mapeamento do dia da semana (chave) para o tipo de treino (valor). Permite busca direta em tempo logarítmico.
+- std::vector<TreinoDia>: histórico cumulativo de treinos.
+- Não utiliza cin nem cout; recebe dados por parâmetro e retorna valores/status.
+6. Interface (include/Interface.hpp, src/Interface.cpp, src/main.cpp):
+- Centraliza toda a interação com o usuário (cin/cout) e o tratamento de entradas inválidas limpando o buffer.
+Etapas de Implementação Propostas
+- Etapa 1: Modelos básicos (Serie e Exercicio).
+- Etapa 2: Agrupamento de séries e sessões (RegistroExercicio e TreinoDia).
+- Etapa 3: Regras de negócio e containers (GerenciadorTreino com set, map e vector).
+- Etapa 4: Menus interativos e validação de entrada (Interface e main.cpp).
 
+2. Implemente somente a etapa 1 do @PLANO.md. Antes de editar, me diga quais arquivos vai criar ou alterar.
+R: Para implementar a Etapa 1 do PLANO.md, irei criar os seguintes arquivos:
+1. include/Serie.hpp: declaração da classe Serie, seus atributos (numero, carga, repeticoes) e métodos de acesso e validação.
+2. src/Serie.cpp: implementação do construtor e métodos da classe Serie, garantindo carga $\ge 0$ e repetições $> 0$.
+3. include/Exercicio.hpp: declaração da classe Exercicio, atributos (nome, grupoMuscular) e operadores de comparação (operator< e operator==).
+4. src/Exercicio.cpp: implementação dos métodos e operadores de ordenação e igualdade de Exercicio.
+5. src/main.cpp: arquivo principal para testar e verificar a compilação e funcionamento dos métodos de Serie e Exercicio.
+
+3. Sim
+R: A Etapa 1 foi implementada e testada com sucesso!
+Arquivos criados
+- include/Serie.hpp e src/Serie.cpp: classe Serie com validação de carga ($\ge 0$) e repetições ($> 0$).
+- include/Exercicio.hpp e src/Exercicio.cpp: classe Exercicio com operator< e operator== baseados no nome.
+- src/main.cpp: testes unitários básicos verificando a criação de instâncias e comparações.
+Resultado da Compilação e Execução
+g++ -std=c++11 -Wall -Wextra src/*.cpp -Iinclude -o fit_control
+.\fit_control
+Etapa 1: Todos os testes passaram com sucesso!
+
+4. Implemente somente a etapa 2 do @PLANO.md. Antes de editar, me diga quais arquivos vai criar ou alterar.
+R: Para implementar a Etapa 2 do PLANO.md, irei criar e alterar os seguintes arquivos:
+Arquivos a criar:
+1. include/RegistroExercicio.hpp: declaração da classe RegistroExercicio, contendo um objeto Exercicio, uma coleção std::vector<Serie> e os métodos para adicionar séries e obter a carga máxima.
+2. src/RegistroExercicio.cpp: implementação dos métodos de RegistroExercicio, incluindo a lógica para calcular a carga máxima executada no exercício.
+3. include/TreinoDia.hpp: declaração da classe TreinoDia, contendo diaSemana, nomeTreino e a coleção std::vector<RegistroExercicio>.
+4. src/TreinoDia.cpp: implementação do construtor, inclusão de registros e métodos de consulta de TreinoDia.
+Arquivo a alterar:
+5. src/main.cpp: atualização dos testes para validar a composição de RegistroExercicio (múltiplas séries em std::vector, cálculo de carga máxima) e de TreinoDia.
+Posso prosseguir com a implementação?
+
+5. Sim
+R: A Etapa 2 foi implementada e testada com sucesso!
+Arquivos criados e alterados
+- include/RegistroExercicio.hpp e src/RegistroExercicio.cpp: gerencia um Exercicio e suas séries em std::vector<Serie>, com cálculo de carga máxima via getCargaMaxima().
+- include/TreinoDia.hpp e src/TreinoDia.cpp: armazena diaSemana, nomeTreino e a lista std::vector<RegistroExercicio>.
+- src/main.cpp: testes unitários adicionais cobrindo o registro de séries e a criação de treinos.
+Resultado da Compilação e Execução
+g++ -std=c++11 -Wall -Wextra src/*.cpp -Iinclude -o fit_control
+.\fit_control
+Etapa 2: Todos os testes passaram com sucesso!
+
+6. Implemente somente a etapa 3 do @PLANO.md. Antes de editar, me diga quais arquivos vai criar ou alterar.
+R: Para implementar a Etapa 3 do PLANO.md, irei criar e alterar os seguintes arquivos:
+Arquivos a criar:
+1. include/GerenciadorTreino.hpp: declaração da classe GerenciadorTreino com seus containers da STL:
+- std::set<Exercicio> catalogo para manter exercícios únicos e ordenados.
+- std::map<std::string, std::string> rotinaSemanal para associar o dia da semana à divisão de treino.
+- std::vector<TreinoDia> historico para guardar as sessões de treino registradas.
+- Métodos para cadastrar exercícios, configurar e consultar rotinas, registrar treinos e consultar histórico (sem uso de cin/cout).
+2. src/GerenciadorTreino.cpp: implementação de toda a lógica de negócio descrita acima.
+Arquivo a alterar:
+3. src/main.cpp: ampliação dos testes unitários para validar as regras do GerenciadorTreino:
+- Rejeição de exercícios repetidos via std::set.
+- Consulta e atualização do mapeamento semanal com std::map.
+- Registro de sessões no histórico e filtragem por dia da semana.
+Posso prosseguir com a implementação?
+
+7. Sim
+R: A Etapa 3 foi implementada e testada com sucesso!
+Arquivos criados e alterados
+- include/GerenciadorTreino.hpp e src/GerenciadorTreino.cpp:
+- std::set<Exercicio>: catálogo de exercícios com validação de unicidade (cadastrarExercicio retorna false se já existir).
+- std::map<std::string, std::string>: mapeamento de dias da semana para as divisões de treino (configurarRotina e getDivisaoDia).
+- std::vector<TreinoDia>: histórico geral e busca filtrada por dia (buscarHistoricoPorDia).
+- Todas as operações recebem e retornam dados sem interagir com std::cin ou std::cout.
+- src/main.cpp: testes unitários validando unicidade, buscas, rotina semanal e histórico.
+Resultado da Compilação e Execução
+g++ -std=c++11 -Wall -Wextra src/*.cpp -Iinclude -o fit_control
+.\fit_control
+Etapa 3: Todos os testes passaram com sucesso!
+
+8. Implemente somente a etapa 4 do @PLANO.md. Antes de editar, me diga quais arquivos vai criar ou alterar.
+R: Para implementar a Etapa 4 do PLANO.md, irei criar e alterar os seguintes arquivos:
+Arquivos a criar:
+1. include/Interface.hpp: declaração da classe Interface, responsável por:
+- Apresentar menus interativos na tela (std::cout).
+- Ler e validar entradas numéricas e de texto com std::cin (tratando cin.fail(), limpando o buffer com cin.clear() e descartando entradas inválidas com cin.ignore()).
+- Implementar os fluxos de uso: cadastrar exercício, configurar rotina semanal, registrar treino com séries, consultar histórico e exibir evolução/ranking de cargas.
+2. src/Interface.cpp: implementação de toda a interação com o usuário, menus, mensagens de erro e integração com a classe GerenciadorTreino.
+Arquivo a alterar:
+3. src/main.cpp: instanciação do GerenciadorTreino e execução do loop principal da Interface.
+Posso prosseguir com a implementação?
+
+9. Sim
+R: A Etapa 4 foi implementada e testada com sucesso!
+Arquivos criados e alterados
+- include/Interface.hpp e src/Interface.cpp:
+- Menus interativos em modo texto.
+- Leitura e validação de dados com limpeza de buffer (cin.clear() e cin.ignore()).
+- Menus para cadastro de exercícios (com detecção de duplicidade), configuração de rotinas, registro de treino com séries, consulta e filtragem de histórico, e cálculo/ordenação de evolução de cargas com std::sort.
+- src/main.cpp: inicializa o GerenciadorTreino e invoca o loop principal da Interface.
+Teste de Execução
+O programa foi compilado e executado com um fluxo completo:
+1. Cadastrou o exercício "Supino Reto" (Peito).
+2. Tentou cadastrar novamente e acusou erro de duplicidade.
+3. Configurou "terca" como "Push".
+4. Registrou o treino com 2 séries (50 kg x 12 reps, 60 kg x 10 reps).
+5. Consultou o histórico exibindo os dados formatados.
+6. Consultou a evolução do exercício exibindo o recorde pessoal de carga (60 kg).
+
+10. Leia @DESCRICAO.md e os arquivos da interface. Crie uma pasta chamada exemplos/ e dentro dela crie um arquivo de texto chamado cenario1.txt contendo uma sequência válida de entradas simulando o uso do menu (por exemplo: cadastrar um exercício, configurar uma rotina, registrar um treino e consultar o histórico). Além disso, explique no README.md como rodar esse arquivo de exemplo usando o redirecionamento de entrada do terminal (ex: ./fit_control < exemplos/cenario1.txt).
+R: A pasta exemplos/ e o arquivo cenario1.txt foram criados, e as instruções de execução via redirecionamento de entrada foram adicionadas ao README.md.
+O que foi feito:
+1. exemplos/cenario1.txt: criado com as entradas simuladas para cadastrar exercício, configurar rotina, registrar treino com 2 séries, consultar histórico e verificar a evolução/carga máxima.
+2. README.md: adicionada a seção "Como Executar os Exemplos" detalhando os comandos para Linux/macOS e Windows (PowerShell e CMD).
+3. Validação: o projeto foi compilado e testado com o arquivo de exemplo, executando o fluxo completo com sucesso.

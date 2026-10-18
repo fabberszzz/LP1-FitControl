@@ -1,0 +1,22 @@
+# Executáveis compilados
+*.exe
+fit_control
+*.out
+*.app
+
+# Arquivos objeto e bibliotecas
+*.o
+*.obj
+*.a
+*.lib
+
+# Arquivos de banco de dados (caso faça o desafio SQLite)
+*.db
+*.sqlite
+*.sqlite3
+
+# Arquivos do sistema operacional e IDEs
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

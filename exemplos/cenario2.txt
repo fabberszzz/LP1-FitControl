@@ -1,0 +1,48 @@
+1
+Agachamento Livre
+Pernas
+1
+Leg Press
+Pernas
+1
+Stiff
+Posterior
+1
+Extensora
+Quadriceps
+1
+Panturrilha Sentado
+Panturrilhas
+2
+quarta
+Legs
+3
+quarta
+3
+Agachamento Livre
+3
+80
+10
+90
+8
+100
+6
+Leg Press
+2
+180
+12
+200
+10
+Stiff
+3
+60
+10
+65
+8
+70
+8
+4
+1
+5
+Agachamento Livre
+6

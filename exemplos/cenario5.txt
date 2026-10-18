@@ -1,0 +1,93 @@
+1
+Barra Fixa
+Costas
+1
+Remada Baixa
+Costas
+1
+Rosca Scott
+Biceps
+1
+Crucifixo Invertido
+Posterior Ombro
+1
+Rosca Martelo
+Biceps
+2
+segunda
+Pull
+2
+quarta
+Pull
+2
+sexta
+Pull
+3
+segunda
+2
+Barra Fixa
+3
+0
+10
+0
+8
+0
+6
+Rosca Scott
+2
+20
+12
+25
+10
+3
+quarta
+3
+Remada Baixa
+3
+45
+12
+50
+10
+55
+8
+Crucifixo Invertido
+3
+8
+15
+10
+12
+12
+10
+Rosca Martelo
+2
+14
+12
+16
+10
+3
+sexta
+2
+Barra Fixa
+3
+5
+8
+10
+6
+10
+5
+Remada Baixa
+2
+55
+10
+60
+8
+4
+1
+4
+2
+quarta
+5
+Barra Fixa
+5
+Remada Baixa
+6

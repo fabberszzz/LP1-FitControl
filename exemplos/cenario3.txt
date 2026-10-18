@@ -1,0 +1,59 @@
+1
+Supino Inclinado Halteres
+Peito
+1
+Desenvolvimento Militar
+Ombros
+1
+Triceps Corda
+Triceps
+1
+Elevacao Lateral
+Ombros
+2
+segunda
+Push
+3
+segunda
+2
+Supino Inclinado Halteres
+3
+24
+12
+28
+10
+32
+8
+Triceps Corda
+3
+25
+15
+30
+12
+35
+10
+3
+segunda
+2
+Supino Inclinado Halteres
+3
+28
+10
+32
+8
+34
+6
+Elevacao Lateral
+3
+10
+15
+12
+12
+14
+10
+5
+Supino Inclinado Halteres
+4
+2
+segunda
+6
